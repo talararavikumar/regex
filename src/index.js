@@ -1,35 +1,50 @@
 import "./styles.css";
+const RegexArr = [];
 
-const str = "ravi 92822 bhavs 48884";
-const str2 = str.match(/\[a-z]/g);
-console.log(str2);
+let RegString = "ravi 92822 bhavs 48884";
+var RegExp = /\d+/g;
+let RegResult = RegString.match(RegString);
+RegexArr.push({ RegExp, RegString, RegResult, res: { RegResult } });
 
-const str3 = "This talara Ravi kumar";
+RegString = "This talara Ravi kumar";
+RegExp = /\b\w{4}\b/g;
 // all 4 letter words
-const str4 = str3.match(/\b\w{4}\b/g);
-console.log(str4);
+RegResult = RegString.match(RegExp);
+RegexArr.push({ RegExp, RegString, RegResult, res: { RegResult } });
 
-const str5 = "This Colour Ravi color";
+RegString = "This Colour Ravi color";
+RegExp = /colou?rs?/gi;
 // u , s are optional
-const str6 = str5.match(/colou?rs?/gi);
-console.log(str6);
+RegResult = RegString.match(RegExp);
+RegexArr.push({ RegExp, RegString, RegResult, res: { RegResult } });
 
-const str7 = "This Colour Ravi I color";
+RegString = "This Colour Ravi I color";
+RegExp = /\b[A-Z][a-z]+\b/g;
 // all cpital letter words
-const str8 = str7.match(/\b[A-Z][a-z]+\b/g);
-console.log(str8);
+RegResult = RegString.match(RegExp);
+RegexArr.push({ RegExp, RegString, RegResult, res: { RegResult } });
 
-const str9 = "This Colour Ravi I color";
+RegString = "This Colour Ravi I color";
+RegExp = /\b[A-Z][a-z]*\b/g;
 
 // all cpital letter words includes single letter words
-const str10 = str9.match(/\b[A-Z][a-z]*\b/g);
-console.log(str10);
+RegResult = RegString.match(RegExp);
+RegexArr.push({ RegExp, RegString, RegResult, res: { RegResult } });
 
-const str11 = "This Lynk Link Lyink color";
+RegString = "This Lynk Link Lyink color";
+RegExp = /L[yi]nk/g;
 // L[second letter can be y i]nk
-const str12 = str11.match(/L[yi]nk/g);
-console.log(str12);
+RegResult = RegString.match(RegExp);
+RegexArr.push({ RegExp, RegString, RegResult, res: { RegResult } });
 
-const innerHtm = "<ul><li>Hi</li></ul>";
+let innerHtm = "";
+
+RegexArr.forEach((objval) => {
+  innerHtm =
+    innerHtm +
+    `<div><div>String :  ${objval.RegString}</div><div>Expression :  ${objval.RegExp}</div><div>Result:  ${objval.RegResult}</div></div>`;
+});
+
+//console.log(innerHtm);
 
 document.getElementById("app").innerHTML = innerHtm;
